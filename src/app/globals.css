@@ -1,26 +1,391 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* Nexus Terminal — brand tokens (image 1) + dark surfaces (image 2) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-inter);
+  --font-label: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-tertiary: var(--brand-tertiary);
+  --color-brand-neutral: var(--brand-neutral);
+  --color-nexus-primary-1: var(--nexus-primary-1);
+  --color-nexus-primary-2: var(--nexus-primary-2);
+  --color-nexus-primary-3: var(--nexus-primary-3);
+  --color-nexus-primary-4: var(--nexus-primary-4);
+  --color-nexus-primary-5: var(--nexus-primary-5);
+  --color-nexus-primary-6: var(--nexus-primary-6);
+  --color-nexus-primary-7: var(--nexus-primary-7);
+  --color-nexus-primary-8: var(--nexus-primary-8);
+  --color-nexus-primary-9: var(--nexus-primary-9);
+  --color-nexus-primary-10: var(--nexus-primary-10);
+  --color-nexus-primary-11: var(--nexus-primary-11);
+  --color-nexus-primary-12: var(--nexus-primary-12);
+  --color-nexus-secondary-1: var(--nexus-secondary-1);
+  --color-nexus-secondary-2: var(--nexus-secondary-2);
+  --color-nexus-secondary-3: var(--nexus-secondary-3);
+  --color-nexus-secondary-4: var(--nexus-secondary-4);
+  --color-nexus-secondary-5: var(--nexus-secondary-5);
+  --color-nexus-secondary-6: var(--nexus-secondary-6);
+  --color-nexus-secondary-7: var(--nexus-secondary-7);
+  --color-nexus-secondary-8: var(--nexus-secondary-8);
+  --color-nexus-secondary-9: var(--nexus-secondary-9);
+  --color-nexus-secondary-10: var(--nexus-secondary-10);
+  --color-nexus-secondary-11: var(--nexus-secondary-11);
+  --color-nexus-secondary-12: var(--nexus-secondary-12);
+  --color-nexus-tertiary-1: var(--nexus-tertiary-1);
+  --color-nexus-tertiary-2: var(--nexus-tertiary-2);
+  --color-nexus-tertiary-3: var(--nexus-tertiary-3);
+  --color-nexus-tertiary-4: var(--nexus-tertiary-4);
+  --color-nexus-tertiary-5: var(--nexus-tertiary-5);
+  --color-nexus-tertiary-6: var(--nexus-tertiary-6);
+  --color-nexus-tertiary-7: var(--nexus-tertiary-7);
+  --color-nexus-tertiary-8: var(--nexus-tertiary-8);
+  --color-nexus-tertiary-9: var(--nexus-tertiary-9);
+  --color-nexus-tertiary-10: var(--nexus-tertiary-10);
+  --color-nexus-tertiary-11: var(--nexus-tertiary-11);
+  --color-nexus-tertiary-12: var(--nexus-tertiary-12);
+  --color-nexus-neutral-1: var(--nexus-neutral-1);
+  --color-nexus-neutral-2: var(--nexus-neutral-2);
+  --color-nexus-neutral-3: var(--nexus-neutral-3);
+  --color-nexus-neutral-4: var(--nexus-neutral-4);
+  --color-nexus-neutral-5: var(--nexus-neutral-5);
+  --color-nexus-neutral-6: var(--nexus-neutral-6);
+  --color-nexus-neutral-7: var(--nexus-neutral-7);
+  --color-nexus-neutral-8: var(--nexus-neutral-8);
+  --color-nexus-neutral-9: var(--nexus-neutral-9);
+  --color-nexus-neutral-10: var(--nexus-neutral-10);
+  --color-nexus-neutral-11: var(--nexus-neutral-11);
+  --color-nexus-neutral-12: var(--nexus-neutral-12);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Default app theme: Nexus dark terminal */
+:root {
+  color-scheme: dark;
+
+  /*
+   * Nexus Terminal typography tokens (Inter headlines & body; aligns with Figma roles).
+   * Apply via .text-headline-1 … .text-body-4 or use var(--text-*-size) in custom CSS.
+   */
+  --text-headline-1-size: 2.5rem;
+  --text-headline-1-leading: 1.1;
+  --text-headline-1-weight: 700;
+  --text-headline-1-tracking: -0.025em;
+  --text-headline-1-color: var(--nexus-neutral-12);
+
+  --text-headline-2-size: 2rem;
+  --text-headline-2-leading: 1.15;
+  --text-headline-2-weight: 600;
+  --text-headline-2-tracking: -0.02em;
+  --text-headline-2-color: var(--nexus-neutral-12);
+
+  --text-headline-3-size: 1.5rem;
+  --text-headline-3-leading: 1.2;
+  --text-headline-3-weight: 600;
+  --text-headline-3-tracking: -0.015em;
+  --text-headline-3-color: var(--nexus-neutral-11);
+
+  --text-headline-4-size: 1.125rem;
+  --text-headline-4-leading: 1.3;
+  --text-headline-4-weight: 600;
+  --text-headline-4-tracking: -0.01em;
+  --text-headline-4-color: var(--nexus-neutral-11);
+
+  --text-body-1-size: 1.125rem;
+  --text-body-1-leading: 1.65;
+  --text-body-1-weight: 400;
+  --text-body-1-tracking: 0;
+  --text-body-1-color: var(--foreground);
+
+  --text-body-2-size: 1rem;
+  --text-body-2-leading: 1.65;
+  --text-body-2-weight: 400;
+  --text-body-2-tracking: 0.01em;
+  --text-body-2-color: color-mix(in srgb, var(--foreground) 92%, var(--nexus-primary-9) 8%);
+
+  --text-body-3-size: 0.875rem;
+  --text-body-3-leading: 1.55;
+  --text-body-3-weight: 400;
+  --text-body-3-tracking: 0.01em;
+  --text-body-3-color: var(--nexus-neutral-9);
+
+  --text-body-4-size: 0.75rem;
+  --text-body-4-leading: 1.5;
+  --text-body-4-weight: 500;
+  --text-body-4-tracking: 0.02em;
+  --text-body-4-color: var(--muted-foreground);
+
+  /*
+   * Nexus Terminal — 12-step ramps (1 = darkest → 12 = lightest).
+   * Steps 7 = Primary #10B981, Secondary #508168, Tertiary #FC7C78, Neutral #09090B.
+   */
+  --nexus-primary-1: #021a14;
+  --nexus-primary-2: #022c22;
+  --nexus-primary-3: #064e3b;
+  --nexus-primary-4: #065f46;
+  --nexus-primary-5: #047857;
+  --nexus-primary-6: #059669;
+  --nexus-primary-7: #10b981;
+  --nexus-primary-8: #34d399;
+  --nexus-primary-9: #6ee7b7;
+  --nexus-primary-10: #a7f3d0;
+  --nexus-primary-11: #d1fae5;
+  --nexus-primary-12: #ecfdf5;
+
+  --nexus-secondary-1: #0c1812;
+  --nexus-secondary-2: #17241b;
+  --nexus-secondary-3: #223228;
+  --nexus-secondary-4: #2e4134;
+  --nexus-secondary-5: #3a5141;
+  --nexus-secondary-6: #456755;
+  --nexus-secondary-7: #508168;
+  --nexus-secondary-8: #6e9a82;
+  --nexus-secondary-9: #8fb49e;
+  --nexus-secondary-10: #b3cfbb;
+  --nexus-secondary-11: #d6e8da;
+  --nexus-secondary-12: #f0f7f2;
+
+  --nexus-tertiary-1: #2a0a08;
+  --nexus-tertiary-2: #401310;
+  --nexus-tertiary-3: #5c1e1a;
+  --nexus-tertiary-4: #7a2924;
+  --nexus-tertiary-5: #9a3832;
+  --nexus-tertiary-6: #bd524c;
+  --nexus-tertiary-7: #fc7c78;
+  --nexus-tertiary-8: #fd9793;
+  --nexus-tertiary-9: #feb3b0;
+  --nexus-tertiary-10: #ffcecc;
+  --nexus-tertiary-11: #ffe8e6;
+  --nexus-tertiary-12: #fff6f5;
+
+  --nexus-neutral-1: #000000;
+  --nexus-neutral-2: #09090b;
+  --nexus-neutral-3: #18181b;
+  --nexus-neutral-4: #27272a;
+  --nexus-neutral-5: #3f3f46;
+  --nexus-neutral-6: #52525b;
+  --nexus-neutral-7: #71717a;
+  --nexus-neutral-8: #a1a1aa;
+  --nexus-neutral-9: #d4d4d8;
+  --nexus-neutral-10: #e4e4e7;
+  --nexus-neutral-11: #f4f4f5;
+  --nexus-neutral-12: #fafafa;
+
+  --brand-primary: var(--nexus-primary-7);
+  --brand-secondary: var(--nexus-secondary-7);
+  --brand-tertiary: var(--nexus-tertiary-7);
+  --brand-neutral: var(--nexus-neutral-2);
+
+  --background: #121212;
+  --foreground: #e5e5e5;
+  --card: #1e1e1e;
+  --card-foreground: #e5e5e5;
+  --popover: #1e1e1e;
+  --popover-foreground: #e5e5e5;
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--brand-neutral);
+  --secondary: #2d2d2d;
+  --secondary-foreground: var(--brand-primary);
+  --muted: #2d2d2d;
+  --muted-foreground: #a1a1aa;
+  --accent: color-mix(in srgb, var(--brand-secondary) 35%, transparent);
+  --accent-foreground: #e5e5e5;
+  --destructive: var(--brand-tertiary);
+  --destructive-foreground: var(--brand-neutral);
+  --border: #333333;
+  --input: #2d2d2d;
+  --ring: var(--brand-primary);
+  --chart-1: var(--brand-primary);
+  --chart-2: var(--brand-secondary);
+  --chart-3: color-mix(in srgb, var(--brand-secondary) 60%, white);
+  --chart-4: var(--brand-tertiary);
+  --chart-5: #52525b;
+  --radius: 0.625rem;
+  --sidebar: #1e1e1e;
+  --sidebar-foreground: #e5e5e5;
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: var(--brand-neutral);
+  --sidebar-accent: #2d2d2d;
+  --sidebar-accent-foreground: #e5e5e5;
+  --sidebar-border: #333333;
+  --sidebar-ring: var(--brand-primary);
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #e5e5e5;
+  --card: #1e1e1e;
+  --card-foreground: #e5e5e5;
+  --popover: #1e1e1e;
+  --popover-foreground: #e5e5e5;
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--brand-neutral);
+  --secondary: #2d2d2d;
+  --secondary-foreground: var(--brand-primary);
+  --muted: #2d2d2d;
+  --muted-foreground: #a1a1aa;
+  --accent: color-mix(in srgb, var(--brand-secondary) 35%, transparent);
+  --accent-foreground: #e5e5e5;
+  --destructive: var(--brand-tertiary);
+  --destructive-foreground: var(--brand-neutral);
+  --border: #333333;
+  --input: #2d2d2d;
+  --ring: var(--brand-primary);
+  --chart-1: var(--brand-primary);
+  --chart-2: var(--brand-secondary);
+  --chart-3: color-mix(in srgb, var(--brand-secondary) 60%, white);
+  --chart-4: var(--brand-tertiary);
+  --chart-5: #52525b;
+  --sidebar: #1e1e1e;
+  --sidebar-foreground: #e5e5e5;
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: var(--brand-neutral);
+  --sidebar-accent: #2d2d2d;
+  --sidebar-accent-foreground: #e5e5e5;
+  --sidebar-border: #333333;
+  --sidebar-ring: var(--brand-primary);
+}
+
+@utility text-headline-1 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-headline-1-size);
+  line-height: var(--text-headline-1-leading);
+  font-weight: var(--text-headline-1-weight);
+  letter-spacing: var(--text-headline-1-tracking);
+  color: var(--text-headline-1-color);
+}
+
+@utility text-headline-2 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-headline-2-size);
+  line-height: var(--text-headline-2-leading);
+  font-weight: var(--text-headline-2-weight);
+  letter-spacing: var(--text-headline-2-tracking);
+  color: var(--text-headline-2-color);
+}
+
+@utility text-headline-3 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-headline-3-size);
+  line-height: var(--text-headline-3-leading);
+  font-weight: var(--text-headline-3-weight);
+  letter-spacing: var(--text-headline-3-tracking);
+  color: var(--text-headline-3-color);
+}
+
+@utility text-headline-4 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-headline-4-size);
+  line-height: var(--text-headline-4-leading);
+  font-weight: var(--text-headline-4-weight);
+  letter-spacing: var(--text-headline-4-tracking);
+  color: var(--text-headline-4-color);
+}
+
+@utility text-body-1 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-body-1-size);
+  line-height: var(--text-body-1-leading);
+  font-weight: var(--text-body-1-weight);
+  letter-spacing: var(--text-body-1-tracking);
+  color: var(--text-body-1-color);
+}
+
+@utility text-body-2 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-body-2-size);
+  line-height: var(--text-body-2-leading);
+  font-weight: var(--text-body-2-weight);
+  letter-spacing: var(--text-body-2-tracking);
+  color: var(--text-body-2-color);
+}
+
+@utility text-body-3 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-body-3-size);
+  line-height: var(--text-body-3-leading);
+  font-weight: var(--text-body-3-weight);
+  letter-spacing: var(--text-body-3-tracking);
+  color: var(--text-body-3-color);
+}
+
+@utility text-body-4 {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-body-4-size);
+  line-height: var(--text-body-4-leading);
+  font-weight: var(--text-body-4-weight);
+  letter-spacing: var(--text-body-4-tracking);
+  color: var(--text-body-4-color);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background antialiased text-body-2;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1 {
+    @apply text-headline-1;
+  }
+  h2 {
+    @apply text-headline-2;
+  }
+  h3 {
+    @apply text-headline-3;
+  }
+  h4 {
+    @apply text-headline-4;
+  }
+  h5,
+  h6 {
+    @apply text-headline-4;
+  }
 }
