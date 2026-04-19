@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "@radix-ui/react-slot"
 
 import { cn } from "@/lib/utils"
 
@@ -59,13 +60,19 @@ const commonsButtonVariants = cva(
 
 export type CommonsButtonProps = React.ComponentProps<"button"> &
   VariantProps<typeof commonsButtonVariants> & {
+    asChild?: boolean
     pressed?: boolean
   }
 
 const CommonsButton = React.forwardRef<HTMLButtonElement, CommonsButtonProps>(
-  ({ className, variant, size, pressed, type = "button", ...props }, ref) => {
+  (
+    { className, variant, size, pressed, asChild, type = "button", ...props },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : "button"
+
     return (
-      <button
+      <Comp
         ref={ref}
         type={type}
         data-pressed={pressed ? "true" : undefined}
